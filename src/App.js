@@ -4,12 +4,12 @@ import "./App.css";
 
 function App() {
   const [users, setUsers] = useState([]);
-  
+  const [filterusers, setFilterusers] = useState([])
   const getAllUsers = async () => {
     await axios.get("http://localhost:8000/users").then
     ((res) => {
-      console.log(res.data);
       setUsers(res.data);
+      setFilterusers(res.data);
     });
   }
   useEffect(() => {
@@ -18,7 +18,7 @@ function App() {
  //search function
  const handleSearchChange = (e) => {
   const SearchText=e.target.value.toLowerCase();
-  const filteredUsers=users.filter((users) => user.name.
+  const filterusers = users.filter((user) => user.name.
   toLowerCase().includes(SearchText)) || users.city.
   toLowercase().includes(SearchText);
  };
